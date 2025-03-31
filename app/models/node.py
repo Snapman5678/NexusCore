@@ -1,0 +1,2 @@
+# Node schema (CPU, status)
+

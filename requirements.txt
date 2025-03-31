@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+grpcio
+grpcio-tools
+redis
+docker
+pydantic
+protobuf

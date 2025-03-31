@@ -1,0 +1,21 @@
+# nexus-core/deployments/docker-compose.yml
+version: '3.8'
+
+services:
+  api:
+    build: ../app
+    ports:
+      - "8000:8000"  # FastAPI
+      - "50051:50051" # gRPC
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data:
