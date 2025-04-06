@@ -6,16 +6,53 @@ services:
     build: ../app
     ports:
       - "8000:8000"  # FastAPI
-      - "50051:50051" # gRPC
+    environment:
+      - REDIS_HOST=redis
+      - PYTHONPATH=/app
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
     depends_on:
       - redis
+    networks:
+      - nexuscore-network
+
+  # Nodes are created dynamically through the API
+  node:
+    build: 
+      context: ../node  # Updated to point to new node directory
+      dockerfile: Dockerfile
+    environment:
+      - API_URL=http://api:8000  # Connect to API's REST endpoint
+      - NODE_ID=node-${INSTANCE:-1}
+      - PYTHONPATH=/app
+      - LOG_LEVEL=DEBUG
+    depends_on:
+      - api
+    deploy:
+      replicas: 0  # Set to 0 since nodes are created via API
+    networks:
+      - nexuscore-network
 
   redis:
     image: redis:alpine
     ports:
       - "6379:6379"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
     volumes:
       - redis_data:/data
+    networks:
+      - nexuscore-network
 
 volumes:
   redis_data:
+
+networks:
+  nexuscore-network:
+    driver: bridge

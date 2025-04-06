@@ -1,2 +1,0 @@
-# gRPC server (health checks)
-
