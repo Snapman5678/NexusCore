@@ -1,0 +1,24 @@
+2025-04-11 09:24:51,768 - INFO - Starting node creation...
+2025-04-11 09:25:00,110 - INFO - Created node 0d008b69f5a8b0568c8c353e11cb03212aacf5ba22920f192aa062a85d1d9196 with 4 CPUs and 4096MB memory
+2025-04-11 09:25:09,278 - INFO - Created node bbd8eca29533eaffb507bf8ea86fb4f8cbd81e977bb229ae30555378ad4132a8 with 2 CPUs and 2048MB memory
+2025-04-11 09:25:17,618 - INFO - Created node 78400b5d3030b6d3d78e527e3c2c9c2fed8042c193d56dbc27f4f082b8bbb9ad with 4 CPUs and 4096MB memory
+2025-04-11 09:25:24,978 - INFO - Created node 365f62dda0a4a7bb54c6deea08818b216349e6a0d38d77ddfd9580731af1431c with 4 CPUs and 4096MB memory
+2025-04-11 09:25:32,332 - INFO - Created node 04f9495dc869faf9ae4be4fef334f8471eadc269cb80ff15bd2eb3a09e23e306 with 8 CPUs and 8192MB memory
+2025-04-11 09:25:34,334 - INFO - Created 5 nodes
+2025-04-11 09:25:44,335 - INFO - Starting pod creation...
+2025-04-11 09:25:46,527 - INFO - Created pod 43565988-625a-4b75-8043-fdb6f04276df with 2 cores and 1024MB memory
+2025-04-11 09:25:49,719 - INFO - Created pod 065bb1f2-4173-4871-bc49-d996ede6825d with 1 cores and 512MB memory
+2025-04-11 09:25:52,946 - INFO - Created pod 2cac7df8-8ec6-45d5-8967-c08afa395323 with 4 cores and 2048MB memory
+2025-04-11 09:25:56,089 - INFO - Created pod 69806910-f70c-4e17-9571-bfd47582707d with 1 cores and 512MB memory
+2025-04-11 09:25:59,186 - INFO - Created pod 7dccaf70-4d1b-4cff-b320-4371ed134679 with 1 cores and 512MB memory
+2025-04-11 09:26:02,347 - INFO - Created pod 56fc21e8-f204-4208-a1cd-e42901b62828 with 4 cores and 2048MB memory
+2025-04-11 09:26:05,490 - INFO - Created pod 72d78207-4747-4741-8377-7447d7b7f1fe with 2 cores and 1024MB memory
+2025-04-11 09:26:08,644 - INFO - Created pod 7f5763b7-8154-46b8-b632-448d5133d81a with 1 cores and 512MB memory
+2025-04-11 09:26:11,779 - INFO - Created pod 3caffcdb-4c50-41b8-9ebe-5f64aaa73fb1 with 2 cores and 1024MB memory
+2025-04-11 09:26:14,922 - INFO - Created pod ba1d6c5e-408a-4565-a1e8-ffa97db3a929 with 1 cores and 512MB memory
+2025-04-11 09:26:15,923 - INFO - Created 10 pods
+2025-04-11 09:26:28,035 - INFO - Final Cluster Health:
+2025-04-11 09:26:28,035 - INFO - Total Nodes: 19
+2025-04-11 09:26:28,035 - INFO - Online Nodes: 5
+2025-04-11 09:26:28,037 - INFO - Average CPU Utilization: 92.5%
+2025-04-11 09:26:28,037 - INFO - Average Memory Utilization: 46.2%

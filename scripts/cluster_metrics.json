@@ -1,0 +1,30 @@
+{
+  "total_nodes": 19,
+  "online_nodes": 5,
+  "total_cpu_cores": 22,
+  "total_memory_gb": 22.0,
+  "average_cpu_utilization": 92.5,
+  "average_memory_utilization": 46.25,
+  "nodes_utilization": {
+    "bbd8eca29533eaffb507bf8ea86fb4f8cbd81e977bb229ae30555378ad4132a8": {
+      "cpu_utilization": 100.0,
+      "memory_utilization": 50.0
+    },
+    "78400b5d3030b6d3d78e527e3c2c9c2fed8042c193d56dbc27f4f082b8bbb9ad": {
+      "cpu_utilization": 100.0,
+      "memory_utilization": 50.0
+    },
+    "0d008b69f5a8b0568c8c353e11cb03212aacf5ba22920f192aa062a85d1d9196": {
+      "cpu_utilization": 100.0,
+      "memory_utilization": 50.0
+    },
+    "04f9495dc869faf9ae4be4fef334f8471eadc269cb80ff15bd2eb3a09e23e306": {
+      "cpu_utilization": 62.5,
+      "memory_utilization": 31.25
+    },
+    "365f62dda0a4a7bb54c6deea08818b216349e6a0d38d77ddfd9580731af1431c": {
+      "cpu_utilization": 100.0,
+      "memory_utilization": 50.0
+    }
+  }
+}
