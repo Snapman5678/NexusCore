@@ -1,3 +1,16 @@
+"""
+Redis Client Module
+
+Provides Redis storage and retrieval functionality for cluster state management.
+Handles persistence of node, pod, and resource information.
+
+Key Features:
+- Singleton Redis client instance
+- Node and pod state management
+- Resource allocation tracking
+- Health metrics storage
+"""
+
 import redis
 import time
 import json
@@ -9,6 +22,12 @@ from ..utils.host_client import HostResourceMonitor
 
 
 class RedisClient:
+    """
+    Singleton Redis client for cluster state persistence.
+    
+    Manages storage and retrieval of nodes, pods, and resource metrics.
+    Provides atomic operations for state updates and queries.
+    """
     _instance = None
     _pool = None
 
@@ -140,6 +159,12 @@ class RedisClient:
 
 
 class RedisHostResourceMonitor:
+    """
+    Monitors and stores host system resource metrics in Redis.
+    
+    Tracks CPU, memory, and resource limits for the host system.
+    Provides periodic updates and limit management.
+    """
     def __init__(
         self, redis_client: Optional[RedisClient] = None, update_interval: int = 30
     ):

@@ -1,3 +1,16 @@
+"""
+Pod Model Module
+
+Defines the data models for pods and their resource requirements.
+Represents workload units that can be scheduled on nodes.
+
+Key Features:
+- Pod status tracking
+- Resource requirement specification
+- Creation timestamps
+- Node assignment tracking
+"""
+
 from pydantic import BaseModel, Field
 from typing import Optional
 from enum import Enum
@@ -17,6 +30,12 @@ class PodResources(BaseModel):
 
 
 class Pod(BaseModel):
+    """
+    Represents a workload unit that can be scheduled on a node.
+    
+    Contains resource requirements, status information, and node assignment.
+    Tracks creation time and current state.
+    """
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     name: str
     node_id: Optional[str] = None

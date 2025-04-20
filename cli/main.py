@@ -6,8 +6,8 @@ import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from cli.commands.nodes import nodes_group
-# from cli.commands.pods import pods_group
-# from cli.commands.cluster import cluster_group
+from cli.commands.pods import pods_group
+from cli.commands.cluster import cluster_group
 
 @click.group()
 def cli():
@@ -16,8 +16,8 @@ def cli():
 
 # Add command groups
 cli.add_command(nodes_group)
-# cli.add_command(pods_group)
-# cli.add_command(cluster_group)
+cli.add_command(pods_group)
+cli.add_command(cluster_group)
 
 if __name__ == '__main__':
     cli()

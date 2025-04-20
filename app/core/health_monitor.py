@@ -1,3 +1,16 @@
+"""
+Health Monitor Module
+
+Provides continuous monitoring of cluster health including node heartbeats,
+resource utilization, and overall cluster status.
+
+Key Features:
+- Node heartbeat monitoring
+- Resource utilization tracking
+- Health status management
+- Failure detection
+"""
+
 import time
 import threading
 import logging
@@ -9,7 +22,24 @@ from .node_manager import NodeManager
 
 
 class HealthMonitorService:
+    """
+    Service for monitoring cluster and node health.
+    
+    Tracks node heartbeats, resource utilization, and overall cluster health.
+    Detects node failures and resource exhaustion conditions.
+    
+    Attributes:
+        check_interval: Time between health checks in seconds
+        failed_nodes: Set of node IDs that have failed
+    """
+    
     def __init__(self, check_interval=60):
+        """
+        Initialize health monitor service.
+        
+        Args:
+            check_interval: Seconds between health checks (default: 60)
+        """
         self.check_interval = check_interval
         self.redis_client = RedisClient.get_instance()
         self.node_manager = NodeManager(redis_client=self.redis_client)

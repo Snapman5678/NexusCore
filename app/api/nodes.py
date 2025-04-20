@@ -98,6 +98,33 @@ async def shutdown_node(node_id: str):
         )
 
 
+@router.delete("/", status_code=200)
+async def delete_all_nodes():
+    """Delete all nodes and their containers"""
+    try:
+        nodes = node_manager.get_all_nodes()
+        success_count = 0
+        failed_nodes = []
+        
+        for node in nodes:
+            if node_manager.delete_node(node.id):
+                success_count += 1
+            else:
+                failed_nodes.append(node.id)
+        
+        if failed_nodes:
+            return {
+                "message": f"Partially completed: {success_count} nodes deleted successfully, {len(failed_nodes)} failed",
+                "failed_nodes": failed_nodes
+            }
+        
+        return {"message": f"All nodes deleted successfully. Total: {success_count}"}
+    except Exception as e:
+        raise HTTPException(
+            status_code=500, detail=f"Error deleting all nodes: {str(e)}"
+        )
+
+
 @router.post("/{node_id}/stop")
 async def stop_node(node_id: str):
     """Stop a node's container"""

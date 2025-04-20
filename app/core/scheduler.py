@@ -1,3 +1,14 @@
+"""
+Scheduler Module
+
+
+
+Key Features:
+- Best-fit pod scheduling
+- Resource availability checking
+- Node selection based on optimal resource fit
+"""
+
 # Best-Fit scheduler
 
 from typing import Optional, List
@@ -8,7 +19,15 @@ from .node_manager import NodeManager
 
 
 class Scheduler:
+    """
+    Best-fit scheduler for pod placement.
+    
+    Implements scheduling logic to place pods on nodes with the best resource fit,
+    maximizing resource utilization while meeting pod requirements.
+    """
+    
     def __init__(self):
+        """Initialize scheduler with Redis client and node manager."""
         self.redis_client = RedisClient.get_instance()
         self.node_manager = NodeManager(redis_client=self.redis_client)
 

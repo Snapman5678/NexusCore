@@ -1,3 +1,16 @@
+"""
+Docker Utils Module
+
+Manages Docker container operations for simulated nodes.
+Handles container lifecycle including creation, deletion, and resource limits.
+
+Key Features:
+- Container lifecycle management
+- Resource constraint configuration
+- Network management
+- Container health monitoring
+"""
+
 # Node container management
 
 import docker
@@ -8,6 +21,12 @@ import os
 
 
 class DockerNodeManager:
+    """
+    Manages Docker containers that simulate cluster nodes.
+    
+    Handles container lifecycle operations and resource configurations.
+    Ensures proper network setup and resource constraints.
+    """
     def __init__(self):
         """Initialize Docker client"""
         self.client = docker.from_env()

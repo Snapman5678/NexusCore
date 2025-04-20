@@ -1,3 +1,35 @@
+"""
+HeartbeatClient Module for NexusCore
+
+This module implements the heartbeat system for NexusCore nodes. Each node in the cluster
+runs this client to:
+
+1. Register itself with the main API service
+2. Periodically send resource metrics (CPU, memory) to the control plane
+3. Report its operational status (online/offline)
+4. Handle graceful shutdown when the container is stopped
+
+The heartbeat system is critical for:
+- Node discovery and registration
+- Resource monitoring and capacity planning
+- Detecting node failures
+- Enabling graceful node decommissioning
+
+Communication Protocol:
+- RESTful API calls to the central NexusCore API
+- JSON payloads containing node metrics
+- Configurable heartbeat interval (default: 30s)
+
+Usage:
+    client = HeartbeatClient(node_id="node-123", api_url="http://api:8000")
+    client.start_heartbeat_loop(interval=30)
+
+Environment Variables:
+    NODE_ID: Unique identifier for this node
+    API_URL: URL of the NexusCore API service
+    LOG_LEVEL: Logging verbosity (default: INFO)
+"""
+
 import time
 import os
 import requests
@@ -25,9 +57,10 @@ class HeartbeatClient:
         )
 
     def _get_container_id(self) -> str:
-        """Get the current container ID (if running in Docker)"""
+        """Get the current container ID (if running in Docker)
+      
+        """
         try:
-            # Read container ID from /proc/self/cgroup (Linux)
             with open("/proc/self/cgroup", "r") as f:
                 for line in f:
                     if "docker" in line:
@@ -124,7 +157,7 @@ class HeartbeatClient:
         except Exception as e:
             self.logger.error(f"Error during cleanup: {str(e)}")
 
-    def _handle_shutdown(self, signum, frame):
+    def _handle_shutdown(self, signum):
         """Handle shutdown signals"""
         self.logger.info(f"Received shutdown signal {signum}")
         self.stop()

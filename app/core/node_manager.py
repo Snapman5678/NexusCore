@@ -1,3 +1,17 @@
+"""
+Node Manager Module
+
+This module handles node lifecycle management including creation, deletion, 
+status updates and resource management. It integrates with Docker for container 
+management and Redis for state persistence.
+
+Key Features:
+- Node creation and deletion
+- Resource tracking and updates
+- Container lifecycle management
+- Status management
+"""
+
 from datetime import datetime
 from typing import List, Optional, Dict
 from ..models.node import Node, NodeResources, NodeStatus
@@ -6,7 +20,25 @@ from ..utils.docker_utils import DockerNodeManager
 
 
 class NodeManager:
+    """
+    Manages node lifecycle and resources in the cluster.
+    
+    Handles node registration, status updates, resource tracking,
+    and container management through Docker integration.
+    
+    Attributes:
+        redis_client: Redis client for state persistence
+        docker_manager: Docker client for container management
+    """
+    
     def __init__(self, redis_client=None, docker_manager=None):
+        """
+        Initialize NodeManager with optional Redis and Docker clients.
+        
+        Args:
+            redis_client: Optional RedisClient instance
+            docker_manager: Optional DockerNodeManager instance
+        """
         self.redis_client = redis_client or RedisClient.get_instance()
         self.docker_manager = docker_manager or DockerNodeManager()
 

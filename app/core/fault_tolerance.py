@@ -1,3 +1,16 @@
+"""
+Fault Tolerance Module
+
+Handles detection and recovery from resource-related failures in the cluster.
+Manages pod rescheduling when nodes fail or become resource constrained.
+
+Key Features:
+- Resource failure detection
+- Node health assessment
+- Pod rescheduling on failure
+- Resource utilization tracking
+"""
+
 # Pod rescheduling on node failure
 
 from typing import List
@@ -9,7 +22,15 @@ import logging
 
 
 class ResourceFailureHandler:
+    """
+    Handles resource-related failures and recovery in the cluster.
+    
+    Detects resource exhaustion, manages node failures, and handles
+    pod rescheduling when nodes become unhealthy or fail.
+    """
+    
     def __init__(self):
+        """Initialize failure handler with Redis client and node manager."""
         self.redis_client = RedisClient.get_instance()
         self.node_manager = NodeManager()
 
