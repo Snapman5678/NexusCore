@@ -22,6 +22,7 @@ class PodStatus(str, Enum):
     PENDING = "pending"
     RUNNING = "running"
     FAILED = "failed"
+    SUCCEEDED = "succeeded"
 
 
 class PodResources(BaseModel):

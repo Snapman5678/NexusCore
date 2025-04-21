@@ -1,13 +1,13 @@
 from fastapi import APIRouter, HTTPException
 from typing import Dict
-from ..core.fault_tolerance import ResourceFailureHandler
+# from ..core.fault_tolerance import ResourceFailureHandler
 from ..models.node import NodeStatus, NodeResources
 from ..core.node_manager import NodeManager
 from pydantic import BaseModel
 
 router = APIRouter()
 node_manager = NodeManager()
-resource_handler = ResourceFailureHandler()
+# resource_handler = ResourceFailureHandler()
 
 
 class ResourceUtilization(BaseModel):
