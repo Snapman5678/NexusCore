@@ -17,7 +17,7 @@ from typing import List, Optional, Dict
 from ..models.node import Node, NodeResources, NodeStatus
 from ..utils.redis_client import RedisClient
 from ..utils.docker_utils import DockerNodeManager
-
+import random
 
 class NodeManager:
     """
@@ -82,6 +82,10 @@ class NodeManager:
         node.last_heartbeat = datetime.now()
         self.redis_client.store_node(node)
         return node
+    
+    def _generate_random_ip(self) -> str:
+        """Generate a random IP address for the node"""
+        return f"192.168.{random.randint(0, 255)}.{random.randint(0, 255)}"
 
     def create_node_container(
         self, cpu_count: int, memory_mb: Optional[int] = None
@@ -100,7 +104,7 @@ class NodeManager:
             node = Node(
                 id=container_info["container_id"],  
                 hostname=container_info["hostname"],
-                ip_address=container_info["ip_address"],
+                ip_address=self._generate_random_ip(),
                 resources=NodeResources(
                     cpu_count=cpu_count,
                     memory_total=memory_bytes,
