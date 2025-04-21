@@ -38,6 +38,16 @@ async def update_host_limits(limits: HostLimits):
                 status_code=400, detail="Memory limit cannot exceed 90%"
             )
 
+        if limits.cpu_limit_percent < 0:
+            raise HTTPException(status_code=400, detail="CPU limit cannot be negative")
+        if limits.cpu_limit_percent == 0:
+            raise HTTPException(status_code=400, detail="CPU limit cannot be zero")
+        if limits.memory_limit_percent < 0:
+            raise HTTPException(status_code=400, detail="Memory limit cannot be negative")
+        if limits.memory_limit_percent == 0:
+            raise HTTPException(status_code=400, detail="Memory limit cannot be zero")
+
+
         redis_host_monitor.update_limits(
             limits.cpu_limit_percent, limits.memory_limit_percent
         )
